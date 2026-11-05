@@ -1,0 +1,58 @@
+DATASET: KittiDataset
+DATA_PATH: data/kitti
+POINT_CLOUD_RANGE:
+- -75.2
+- -75.2
+- -2
+- 75.2
+- 75.2
+- 4
+DATA_SPLIT:
+  train: train
+  test: val
+INFO_PATH:
+  train:
+  - kitti_infos_train.pkl
+  test:
+  - kitti_infos_val.pkl
+DATA_AUGMENTOR:
+  DISABLE_AUG_LIST: []
+  AUG_CONFIG_LIST: []
+POINT_FEATURE_ENCODING:
+  encoding_type: absolute_coordinates_encoding
+  used_feature_list:
+  - x
+  - y
+  - z
+  src_feature_list:
+  - x
+  - y
+  - z
+  - intensity
+DATA_PROCESSOR:
+- NAME: mask_points_and_boxes_outside_range
+  REMOVE_OUTSIDE_BOXES: true
+- NAME: shuffle_points
+  SHUFFLE_ENABLED:
+    train: true
+    test: false
+- NAME: transform_points_to_voxels
+  VOXEL_SIZE:
+  - 0.1
+  - 0.1
+  - 0.15
+  MAX_POINTS_PER_VOXEL: 5
+  MAX_NUMBER_OF_VOXELS:
+    train: 80000
+    test: 90000
+TEST:
+  BOX_FILTER:
+    USE_IMAGE_AREA_FILTER: true
+    FOV_FILTER: true
+    LIMIT_RANGE:
+    - -75.2
+    - -75.2
+    - -2
+    - 75.2
+    - 75.2
+    - 4

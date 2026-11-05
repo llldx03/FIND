@@ -1,0 +1,24 @@
+name: find
+channels:
+  - conda-forge
+dependencies:
+  - python=3.8.20
+  - pip=24.0
+  - setuptools=59.5.0
+  - wheel
+  - ninja
+  - pip:
+      - --extra-index-url https://download.pytorch.org/whl/cu117
+      - torch==1.13.1+cu117
+      - spconv-cu117==2.3.6
+      - cumm-cu117==0.4.11
+      - numpy==1.24.4
+      - scipy==1.9.1
+      - numba==0.58.1
+      - PyYAML==6.0.1
+      - easydict==1.11
+      - scikit-image==0.20.0
+      - nuscenes-devkit==1.1.11
+      - threadpoolctl==3.5.0
+      - tensorboardX==2.6.2.2
+      - tqdm==4.66.1

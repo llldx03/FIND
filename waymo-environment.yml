@@ -1,0 +1,11 @@
+name: find-waymo
+channels:
+  - conda-forge
+dependencies:
+  - python=3.8.20
+  - pip=24.0
+  - pip:
+      - tensorflow==2.6.0
+      - numpy==1.19.5
+      - protobuf==3.20.3
+      - waymo-open-dataset-tf-2-6-0==1.4.3
