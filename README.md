@@ -2,6 +2,9 @@
 
 This is the official project repository for FIND: Frequency Invariance Disentanglement for Test-Time Adaptation in LiDAR 3D Detection by Dongxiao Li, Zixuan Hu and Ling-Yu Duan **(NeurIPS 2026)**.
 
+[![Paper](https://img.shields.io/badge/Paper-PDF-red)](https://arxiv.org/abs/2611.09170)
+[![Checkpoints](https://img.shields.io/badge/Checkpoints-Hugging%20Face-yellow)](https://huggingface.co/llldx03/FIND)
+
 ## Overview
 
 LiDAR-based 3D Object Detection (L3OD) is a fundamental 3D perception task, yet its performance is often compromised by domain shifts arising from diverse sensor configurations and environmental conditions. Existing Test-Time Adaptation (TTA) methods primarily leverage self-supervision in the spatial domain, yet they frequently confound semantic content with domain style due to the sparse, non-Euclidean nature of point clouds. To overcome this limitation, we propose **FIND** (**F**requency **IN**variance **D**isentanglement), a novel TTA framework that precisely disentangles domain-invariant content from domain-specific interference within the frequency domain. Our methodology utilizes B-Spline fitting to construct locally adaptive filters integrated into a dual-stream architecture: an Invariant Stream extracts robust features to guide pseudo-labeling, while a Specific Stream enforces consistency against domain perturbations. By combining invariance-driven alignment with stability-guided regularization, our approach dynamically extracts robust domain-invariant features while suppressing domain-specific interference. Extensive experiments on cross-dataset adaptation and robust corruption benchmarks demonstrate that FIND significantly outperforms state-of-the-art methods.
@@ -12,8 +15,13 @@ LiDAR-based 3D Object Detection (L3OD) is a fundamental 3D perception task, yet 
 
 ### Requirements
 
-- Linux, Python 3.8 and PyTorch 1.13.1 (CUDA 11.7).
-- CUDA 11.8 toolkit and spconv-cu117 2.3.6. Make sure `nvcc` is available on `PATH`.
+FIND depends on:
+  - CUDA Toolkit 11.8
+  - Python 3.8
+  - PyTorch 1.13.1 + cu117
+  - spconv-cu117 2.3.6
+
+Make sure `nvcc` is available on `PATH`.
 
 Run the following commands from the repository root:
 
@@ -79,7 +87,7 @@ CKPT=checkpoints/n2k.pth
 PRIOR=priors/n2k.pth
 ```
 
-Pretrained checkpoint links will be added here.
+Download the pretrained checkpoint for your task from [Hugging Face](https://huggingface.co/llldx03/FIND) and place it in `checkpoints/`.
 
 ### Source Training
 
@@ -113,3 +121,14 @@ Please contact Dongxiao Li by [dxli25@stu.pku.edu.cn] if you have any questions.
 ## Acknowledgement
 
 This repository is built using the [MOS](https://github.com/zhuoxiao-chen/MOS) and [OpenPCDet](https://github.com/open-mmlab/OpenPCDet) repository. Thanks for these excellent projects!
+
+## Citation
+
+```bibtex
+@article{li2026find,
+  title={{FIND}: Frequency Invariance Disentanglement for Test-Time Adaptation in {LiDAR} {3D} Detection},
+  author={Li, Dongxiao and Hu, Zixuan and Duan, Ling-Yu},
+  journal={arXiv preprint arXiv:2611.09170},
+  year={2026}
+}
+```
